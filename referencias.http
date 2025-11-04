@@ -1,0 +1,14 @@
+### COMPRAS
+
+GET http://localhost:3333/compras
+
+###COMPRAS
+
+POST http://localhost:3333/compras
+Content-Type: application/json
+
+{
+    "price": "120",
+    "name": "Big Cheese",
+    "description": "The king of cheeses"
+}
