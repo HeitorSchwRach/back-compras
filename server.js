@@ -1,5 +1,6 @@
 import { log } from 'console';
 import Fastify from 'fastify';
+import cors from '@fastify/cors'
 import pkg from 'pg'
 
 const{Pool} = pkg
@@ -13,6 +14,12 @@ const pool = new Pool({
 })
 
 const server = Fastify()
+
+server.register(cors,{
+    origin: true,
+    methods: ['GET','POST','PUT','DELETE']
+})
+
 
 server.get('/compras', async (req, reply)=>{
     const result = await pool.query(`SELECT * FROM purchase`)

@@ -1,0 +1,50 @@
+<h1>
+    Compras
+</h1>
+
+<button onclick="buscarCompras()">
+    Buscar compras
+</button>
+
+<br>
+<br>
+<br>
+
+<input type="text" id="name" placeholder="NDigite o nome">
+<input type="text" name="" id="price" placeholder="Digite o preço">
+<input type="text" name="" id="description" placeholder="Digite a descrição">
+
+<button onclick="cadastrarCompra()">x'
+    Cadastrar
+</button>
+
+<script>
+     async function buscarCompras(){
+        const response = await fetch('http://localhost:3000/compras', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const data = response.json()
+        console.log(data);
+    } 
+    async function cadastrarCompra() {
+        const name = document.getElementById('name').value
+        const price = document.getElementById('price').value
+        const description = document.getElementById('description').value
+        const payload = JSON.stringify({
+            name,
+            price,
+            description
+        })
+        const response = await fetch('http://localhost:3000/compras', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: payload
+        })
+    }
+    
+</script>
